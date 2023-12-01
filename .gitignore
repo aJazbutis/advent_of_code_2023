@@ -1,0 +1,14 @@
+# Go specific
+*.exe
+*.exe~
+*.dll
+*.dll~
+*.exe.sig
+*.dll.sig
+*.test
+*.out
+_Gocache/
+*.DS_Store
+.idea/
+.vscode/
+*.sum

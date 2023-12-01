@@ -1,7 +1,8 @@
 package utils
 
-import	(
+import (
 	"bufio"
+	"fmt"
 	"os"
 )
 
@@ -27,4 +28,17 @@ func Abc()(string)	{
 		abc += string(c);
 	}
 	return abc
+}
+
+func ReverseString(s string) (string) {
+	runes := []rune(s);
+	for i, j := 0, len(runes) - 1; i < j; i, j = i + 1, j - 1	{
+		runes[i], runes[j] = runes[j], runes[i]
+	}
+	return string(runes);
+}
+
+func ErrorExit(err error)	{
+	fmt.Println(err);
+	os.Exit(1)
 }

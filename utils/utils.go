@@ -10,6 +10,7 @@ func GetLinesFromFile(fileName string) ([]string, error)	{
 	var lines []string
 	file, err := os.Open(fileName)
 	if (err != nil)	{
+		// panic(err)
 		return lines, err;
 	}
 	fileScanner := bufio.NewScanner(file);

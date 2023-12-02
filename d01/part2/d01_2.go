@@ -10,7 +10,7 @@ import (
 )
 
 func getDigit(m map[string]string, line string) string	{
-	idx := len(line) - 1;
+	idx := len(line);
 	ret := "";
 	for key, val := range m {
 		posKey := strings.Index(line, key)
@@ -52,12 +52,6 @@ func main()	{
 	for _, line := range lines	{
 		rev := utils.ReverseString(line);
 		num := getDigit(numbers, line) + getDigit(reverse, rev)
-		/*
-		ok,this is idiotic
-		*/
-		if	len(num) < 2 {
-			num += num;
-		}
 		n, err := strconv.Atoi(num)
 		if err == nil {
 			sum += n;

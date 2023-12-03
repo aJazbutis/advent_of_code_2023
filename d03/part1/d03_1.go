@@ -2,8 +2,8 @@ package main
 
 import (
 	"advent/utils"
-	"os"
 	"fmt"
+	"os"
 	"strings"
 	"unicode"
 )

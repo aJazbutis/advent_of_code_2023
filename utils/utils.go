@@ -6,14 +6,15 @@ import (
 	"os"
 	"strconv"
 	"unicode"
+	"log"
 )
 
-func GetLinesFromFile(fileName string) ([]string, error)	{
+func GetLinesFromFile(fileName string) ([]string)	{
 	var lines []string
 	file, err := os.Open(fileName)
 	if (err != nil)	{
-		// panic(err)
-		return lines, err;
+		panic(err)
+		// return lines, err;
 	}
 	fileScanner := bufio.NewScanner(file);
 	fileScanner.Split(bufio.ScanLines)
@@ -21,7 +22,7 @@ func GetLinesFromFile(fileName string) ([]string, error)	{
 		lines = append(lines, fileScanner.Text())
 	}
 	file.Close()
-	return lines, nil
+	return lines
 }
 
 func Abc()(string)	{
@@ -61,4 +62,16 @@ func ExtractInt(line string, idx int ) (int)	{
 func ErrorExit(err error)	{
 	fmt.Println(err);
 	os.Exit(1)
+}
+
+func CheckArgs(i int, args []string)	{
+	if len(args) != i	{
+		panic("Bad args")
+	}
+}
+
+func Panicked()	{
+	if err := recover(); err != nil {
+		log.Fatal(err)
+	}
 }

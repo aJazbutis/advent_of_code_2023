@@ -29,13 +29,13 @@ func mapToMap(data *[][]int, lines *[]string, i int) int {
 	linesToInt := [][]int{}
 	for i < len(*lines) && (*lines)[i] != "" {
 		info := strings.Fields((*lines)[i])
-		dest, err := strconv.Atoi(info[0])
-		utils.CheckError(err)
-		src, err := strconv.Atoi(info[1])
-		utils.CheckError(err)
-		rnge, err := strconv.Atoi(info[2])
-		utils.CheckError(err)
-		linesToInt = append(linesToInt, []int{dest, src, rnge})
+		a := []int{}
+		for i := range info {
+			n, err := strconv.Atoi(info[i])
+			utils.CheckError(err)
+			a = append(a, n)
+		}
+		linesToInt = append(linesToInt, a)
 		i++
 	}
 	for i := range *data {

@@ -43,6 +43,5 @@ func ways(time int, record int) int {
 func main() {
 	defer utils.Panicked()
 	utils.CheckArgs(2, os.Args)
-	ret := ways(linesToData(utils.GetLinesFromFile(os.Args[1])))
-	fmt.Println(ret)
+	fmt.Println(ways(linesToData(utils.GetLinesFromFile(os.Args[1]))))
 }

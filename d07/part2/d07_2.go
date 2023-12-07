@@ -83,7 +83,7 @@ func handToType(hand string) int {
 		hand = strings.Replace(hand, string(hand[0]), "", -1)
 	}
 	if jokers == 5 {
-		count = append(count, 5)
+		return fiveOfKind
 	} else {
 		max := slices.Max(count)
 		idx := slices.Index(count, max)

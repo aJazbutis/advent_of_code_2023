@@ -21,13 +21,11 @@ func getMarks(lines []string) string {
 }
 
 func main() {
+	defer utils.Panicked()
 	if len(os.Args) != 2 {
 		panic("No arg")
 	}
-	lines, err := utils.GetLinesFromFile(os.Args[1])
-	if err != nil {
-		panic(err)
-	}
+	lines := utils.GetLinesFromFile(os.Args[1])
 	marks := getMarks(lines)
 	sum := 0
 	for i, line := range lines {

@@ -3,10 +3,10 @@ package utils
 import (
 	"bufio"
 	"fmt"
+	"log"
 	"os"
 	"strconv"
 	"unicode"
-	"log"
 )
 
 func GetLinesFromFile(fileName string) ([]string)	{
@@ -80,4 +80,18 @@ func CheckError(err error)	{
 	if err != nil	{
 		panic(err)
 	}
+}
+
+func gcd(a int, b int) int {
+	for b != 0 {
+		a , b = b, a%b
+	}
+	return a
+}
+
+// LCM(a, b) * GCD(a, b) = a * b.
+
+func LCM(a int, b int) int {
+	lcm := (a * b) / gcd(a, b)
+	return lcm
 }

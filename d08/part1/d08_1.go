@@ -15,6 +15,7 @@ func nodeToData(node string) (string, [2]string) {
 	val := [2]string{strings.Trim(va[0], " "), strings.Trim(va[1], " ")}
 	return key, val
 }
+
 func getData(lines []string, instructions *string) map[string][2]string {
 	m := make(map[string][2]string)
 	for i := range lines {
@@ -30,6 +31,7 @@ func getData(lines []string, instructions *string) map[string][2]string {
 	}
 	return m
 }
+
 func main() {
 	defer utils.Panicked()
 	utils.CheckArgs(2, os.Args)

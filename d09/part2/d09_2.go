@@ -27,23 +27,25 @@ func stringsToInts(s []string) []int {
 	return ret
 }
 
-func diferenz(s []int) []int {
+func diferenz(s []int, firsts *[]int) []int {
 	ret := []int{}
 	for i := 0; i < len(s)-1; i++ {
 		ret = append(ret, s[i+1]-s[i])
 	}
+	*firsts = append(*firsts, ret[0])
 	return ret
 }
 
 func extrapolate(s string) int {
-	data := [][]int{stringsToInts(strings.Fields(s))}
-	for !allNils(data[len(data)-1]) {
-		data = append(data, diferenz(data[len(data)-1]))
+	data := stringsToInts(strings.Fields(s))
+	firsts := []int{data[0]}
+	for !allNils(data) {
+		data = diferenz(data, &firsts)
 	}
-	slices.Reverse(data)
+	slices.Reverse(firsts)
 	ret := 0
-	for i := 0; i < len(data)-1; i++ {
-		ret = data[i+1][0] - ret
+	for i := 0; i < len(firsts)-1; i++ {
+		ret = firsts[i+1] - ret
 	}
 	return ret
 }

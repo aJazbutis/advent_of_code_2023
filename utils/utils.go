@@ -95,3 +95,11 @@ func LCM(a int, b int) int {
 	lcm := (a * b) / gcd(a, b)
 	return lcm
 }
+
+func StringIsertAtIdx(s string, idx int, insert string) string	{
+	if idx < 0 || idx > len(s)-1	{
+		panic("Idx out of range")
+	}
+	
+	return s[:idx] + insert + s[idx:]
+}

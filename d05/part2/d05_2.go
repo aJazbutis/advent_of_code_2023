@@ -53,11 +53,15 @@ func mapToMap(data *map[int][][3]int, lines *[]string, i int, id int) int {
 	return i
 }
 
-func getMapping(val int, mp [][3]int) int {
-	for i := range mp {
-		if val >= mp[i][0] && val < mp[i][0]+mp[i][1] {
-			diff := val - mp[i][0]
-			return mp[i][2] + diff
+func getMapping(val int, maps *map[int][][3]int) int {
+	for key := seedToSoil; key <= humiToLoca; key++ {
+		mp := (*maps)[key]
+		for i := range mp {
+			if val >= mp[i][0] && val < mp[i][0]+mp[i][1] {
+				diff := val - mp[i][0]
+				val = mp[i][2] + diff
+				break
+			}
 		}
 	}
 	return val
@@ -73,9 +77,7 @@ func minDist(jobs <-chan Job, res chan<- int) {
 		min := job.s[0]
 		for seed := job.s[0]; seed < job.s[0]+job.s[1]; seed++ {
 			s := seed
-			for key := seedToSoil; key <= humiToLoca; key++ {
-				s = getMapping(s, (*job.maps)[key])
-			}
+			s = getMapping(s, (job.maps))
 			if s < min {
 				min = s
 			}

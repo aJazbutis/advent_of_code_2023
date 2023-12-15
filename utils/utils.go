@@ -102,3 +102,30 @@ func StringIsertAtIdx(s string, idx int, insert string) string {
 	}
 	return s[:idx] + insert + s[idx:]
 }
+
+func ColsToRows(lines []string) []string {
+	ret := []string{}
+	for i := range lines[0] {
+		s := ""
+		for j := range lines {
+			s += string(lines[j][i])
+		}
+		ret = append(ret, s)
+	}
+	return ret
+}
+
+const l = 100
+
+func RowsToCols(rows []string) []string {
+	ret := make([]string, l)
+	for i := range ret {
+		ret[i] = ""
+	}
+	for i := range rows {
+		for j := range rows[i] {
+			ret[j] += string(rows[i][j])
+		}
+	}
+	return ret
+}
